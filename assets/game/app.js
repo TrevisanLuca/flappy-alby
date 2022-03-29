@@ -32,11 +32,11 @@ import {RankingService} from "./services/rankingService.js";
             levelsOptions.push(new Option(playerCoordinate, i / 2, i > 2 ? 8 : 5, i * 10000));
         }
 
+        const httpService = new HttpService();
         const statisticsService = new StatisticsService(area.coordinate, html_speed, html_percentage);
-        const overlayService = new OverlayService(html_overlay, html_overlay_title, html_overlay_score, html_start_button);
+        const overlayService = new OverlayService(html_overlay, html_overlay_title, html_overlay_score, html_start_button, httpService, 'http://localhost:5126/Ranking');
         const levelService = new LevelService(html_level, levelsOptions);
         const livesService = new LivesService(html_lives);
-        const httpService = new HttpService();
         const rankingService = new RankingService(html_ranking, httpService, 'http://localhost:5126/ranking');
 
         const game = new Game(area, statisticsService, overlayService, levelService, livesService, rankingService);
