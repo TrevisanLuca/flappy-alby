@@ -50,7 +50,6 @@
         this.#htmlTitle.innerHTML = 'Game Over!';
         this.#htmlScore.innerHTML = OverlayService.#timesBuilder(stopwatch);
         this.#htmlButton.innerHTML = 'Retry';
-        this.#http.post(this.#url, `${stopwatch.total.getMinutes().round2()}:${stopwatch.total.getSeconds().round2()}:${stopwatch.total.getMilliseconds().round2()}`);
-
+        this.#http.post(this.#url, `00:${stopwatch.total.getMinutes().round2()}:${stopwatch.total.getSeconds().round2()}.${stopwatch.total.getMilliseconds().round2()}`);
     }
 }
