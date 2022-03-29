@@ -3,12 +3,17 @@
     #htmlTitle
     #htmlScore;
     #htmlButton;
+    #http;
+    #url;
 
-    constructor(html, htmlTitle, htmlScore, htmlButton) {
+
+    constructor(html, htmlTitle, htmlScore, htmlButton, http, url) {
         this.#html = html;
         this.#htmlTitle = htmlTitle;
         this.#htmlScore = htmlScore;
         this.#htmlButton = htmlButton;
+        this.#http = http;
+        this.#url = url;
     }
 
     static #timesBuilder(stopwatch) {
@@ -46,5 +51,6 @@
         this.#htmlTitle.innerHTML = 'Game Over!';
         this.#htmlScore.innerHTML = OverlayService.#timesBuilder(stopwatch);
         this.#htmlButton.innerHTML = 'Retry';
+        this.#http.post(this.#url, `${stopwatch.total.getMinutes().round2()}:${stopwatch.total.getSeconds().round2()}:${stopwatch.total.getMilliseconds().round2()}`);
     }
 }
