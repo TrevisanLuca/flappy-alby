@@ -18,8 +18,7 @@
 
 .block {
     position: absolute;
-    background: deeppink;
-
+    background: darkgreen;
     z-index: 2;
 }
 

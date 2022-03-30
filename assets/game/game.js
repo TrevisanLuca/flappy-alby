@@ -1,7 +1,7 @@
-﻿import { Ai } from "./core/ai.js";
-import { Player } from "./core/player.js";
-import { BarrierSchema } from "./schemas/barrierSchema.js";
-import { Stopwatch } from "./core/stopwatch.js";
+﻿import {Ai} from "./core/ai.js";
+import {Player} from "./core/player.js";
+import {BarrierSchema} from "./schemas/barrierSchema.js";
+import {Stopwatch} from "./core/stopwatch.js";
 
 export class Game {
     #area;

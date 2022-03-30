@@ -1,13 +1,13 @@
-﻿import { Area } from "./core/area.js";
-import { OverlayService } from "./services/overlayService.js";
-import { LevelService } from "./services/levelService.js";
-import { Option } from "./model/options.js";
-import { Game } from "./game.js";
-import { Coordinate } from "./model/coordinate.js";
-import { LivesService } from "./services/livesService.js";
-import { StatisticsService } from "./services/statisticsService.js";
-import { HttpService } from "./services/httpService.js";
-import { RankingService } from "./services/rankingService.js";
+﻿import {Area} from "./core/area.js";
+import {OverlayService} from "./services/overlayService.js";
+import {LevelService} from "./services/levelService.js";
+import {Option} from "./model/options.js";
+import {Game} from "./game.js";
+import {Coordinate} from "./model/coordinate.js";
+import {LivesService} from "./services/livesService.js";
+import {StatisticsService} from "./services/statisticsService.js";
+import {HttpService} from "./services/httpService.js";
+import {RankingService} from "./services/rankingService.js";
 
 (function () {
     document.addEventListener('DOMContentLoaded', () => {
@@ -35,10 +35,10 @@ import { RankingService } from "./services/rankingService.js";
 
         const httpService = new HttpService();
         const statisticsService = new StatisticsService(area.coordinate, html_speed, html_percentage);
-        const overlayService = new OverlayService(html_overlay, html_overlay_title, html_overlay_score, html_start_button, html_name, httpService, 'http://localhost:5126/Ranking');
+        const overlayService = new OverlayService(html_overlay, html_overlay_title, html_overlay_score, html_start_button, html_name, httpService, 'https://localhost:7126/Ranking');
         const levelService = new LevelService(html_level, levelsOptions);
-        const livesService = new LivesService(html_lives);
-        const rankingService = new RankingService(html_ranking, httpService, 'http://localhost:5126/ranking');
+        const livesService = new LivesService(html_lives, 3);
+        const rankingService = new RankingService(html_ranking, httpService, 'https://localhost:7126/ranking');
 
         const game = new Game(area, statisticsService, overlayService, levelService, livesService, rankingService);
         html_start_button.onclick = () => game.nextLevel()();

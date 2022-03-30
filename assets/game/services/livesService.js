@@ -4,7 +4,7 @@
     #lives = 0;
     #totalLives;
 
-    constructor(html, lives = 1) {
+    constructor(html, lives = 3) {
         this.#html = html;
 
         this.#totalLives = lives;

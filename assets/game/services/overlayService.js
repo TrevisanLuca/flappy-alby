@@ -49,7 +49,6 @@
         this.#htmlScore.innerHTML = OverlayService.#timesBuilder(stopwatch);
         this.#htmlButton.innerHTML = 'Play Again';
         this.#htmlName.style.display = 'none';
-
         this.#playerName = this.#htmlName.value === "" ? "Anonymous" : this.#htmlName.value;
         this.#http.post(this.#url, `00:${stopwatch.total.getMinutes().round2()}:${stopwatch.total.getSeconds().round2()}.${stopwatch.total.getMilliseconds().round2()}`, this.#playerName);
     }
@@ -60,6 +59,5 @@
         this.#htmlScore.innerHTML = OverlayService.#timesBuilder(stopwatch);
         this.#htmlButton.innerHTML = 'Retry';
         this.#htmlName.style.display = 'none';
-
     }
 }
