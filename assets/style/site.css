@@ -44,3 +44,6 @@ body {
     font-size: 4em;
     height: 9vh;
 }
+#overlay-name{
+    margin-bottom: 5px;
+}

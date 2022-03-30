@@ -20,7 +20,8 @@
     #print = response => {
         let html = '<ol>';
         for (const player of JSON.parse(response)) {
-            html += `<li>${player.name} - ${player.total}</li>`;
+            let newTotal = player.total.substring(0, 11);
+            html += `<li>${player.name} - ${newTotal}</li>`;
         }
         html += '</ol>';
 

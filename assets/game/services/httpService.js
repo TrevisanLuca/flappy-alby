@@ -18,16 +18,15 @@
         };
     }
 
-    post(url, playerTime) {
+    post(url, playerTime, playerName) {
         const playerInfo = {
-            "name": "LucaEliaGiacomo",
-            "total": playerTime,
-            "id": 4
+            "name": playerName,
+            "total": playerTime
         };
         let payload = JSON.stringify(playerInfo);
         const httpFactory = this.#httpFactory();
         httpFactory.open('POST', url);
-        httpFactory.setRequestHeader("Content-type", "application/json"); 
+        httpFactory.setRequestHeader("Content-type", "application/json");
         httpFactory.send(payload);
     }
 }

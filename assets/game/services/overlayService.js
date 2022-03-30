@@ -5,14 +5,17 @@
     #htmlButton;
     #http;
     #url;
+    #htmlName;
+    #playerName;
 
-    constructor(html, htmlTitle, htmlScore, htmlButton, http, url) {
+    constructor(html, htmlTitle, htmlScore, htmlButton, htmlName, http, url) {
         this.#html = html;
         this.#htmlTitle = htmlTitle;
         this.#htmlScore = htmlScore;
         this.#htmlButton = htmlButton;
         this.#http = http;
         this.#url = url;
+        this.#htmlName = htmlName;
     }
 
     static #timesBuilder(stopwatch) {
@@ -29,6 +32,7 @@
         this.#htmlTitle.innerHTML = 'Continue ...';
         this.#htmlScore.innerHTML = OverlayService.#timesBuilder(stopwatch);
         this.#htmlButton.innerHTML = 'Continue';
+        this.#htmlName.style.display = 'none';
     }
 
     levelOver(stopwatch, level = "") {
@@ -36,6 +40,7 @@
         this.#htmlTitle.innerHTML = `Level <span class="level">${level}</span> Over!`;
         this.#htmlScore.innerHTML = OverlayService.#timesBuilder(stopwatch);
         this.#htmlButton.innerHTML = 'Next Level';
+        this.#htmlName.style.display = 'none';
     }
 
     youWin(stopwatch) {
@@ -43,6 +48,10 @@
         this.#htmlTitle.innerHTML = 'You Win!';
         this.#htmlScore.innerHTML = OverlayService.#timesBuilder(stopwatch);
         this.#htmlButton.innerHTML = 'Play Again';
+        this.#htmlName.style.display = 'none';
+
+        this.#playerName = this.#htmlName.value === "" ? "Anonymous" : this.#htmlName.value;
+        this.#http.post(this.#url, `00:${stopwatch.total.getMinutes().round2()}:${stopwatch.total.getSeconds().round2()}.${stopwatch.total.getMilliseconds().round2()}`, this.#playerName);
     }
 
     gameOver(stopwatch) {
@@ -50,6 +59,7 @@
         this.#htmlTitle.innerHTML = 'Game Over!';
         this.#htmlScore.innerHTML = OverlayService.#timesBuilder(stopwatch);
         this.#htmlButton.innerHTML = 'Retry';
-        this.#http.post(this.#url, `00:${stopwatch.total.getMinutes().round2()}:${stopwatch.total.getSeconds().round2()}.${stopwatch.total.getMilliseconds().round2()}`);
+        this.#htmlName.style.display = 'none';
+
     }
 }

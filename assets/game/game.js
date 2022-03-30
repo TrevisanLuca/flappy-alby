@@ -27,7 +27,7 @@ export class Game {
     }
 
     nextLevel() {
-        if (this.#levelService.first && !this.#livesService.alive) {
+        if (this.#levelService.first && !this.#livesService.alive) {            
             this.#livesService.recover();
             this.#rankingService.hide();
             this.#stopwatch = new Stopwatch();
@@ -91,6 +91,7 @@ export class Game {
                 // Game Over (you LOOSE)  =>  players.count <= 0
                 this.#overlayService.gameOver(this.#stopwatch);
                 this.#levelService.reset();
+                document.getElementById('ranking').innerHTML = "Loading online rankings...";
                 setTimeout(() => {
                     this.#rankingService.show()
                 }, 1000);
